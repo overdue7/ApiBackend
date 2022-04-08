@@ -64,7 +64,7 @@ namespace TweetApp.Repository.Implementation
 
         public TweetModel FindByCondtion(Expression<Func<TweetModel, bool>> expression)
         {
-            throw new NotImplementedException();
+            return _tweetData.Find(expression => true).FirstOrDefault();
         }
 
         public bool Update(TweetModel data)

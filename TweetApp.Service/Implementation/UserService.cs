@@ -60,7 +60,7 @@ namespace TweetApp.Service.Implementation
         public List<UserModel> GetUserByUsername(string username)
         {
             List<UserModel> userModels = new List<UserModel>();
-            userModels=_userRepository.FindAllByCondtion(x => x.username.Contains(username));
+            userModels=_userRepository.FindAllByCondtion(x => x.username.Equals(username));
             return userModels;
         }
         public List<UserModel> Login(UserModel userModel)
@@ -118,8 +118,6 @@ namespace TweetApp.Service.Implementation
             }
             catch (Exception)
             {
-
-                throw;
             }
             return status;
         }

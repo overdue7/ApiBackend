@@ -38,7 +38,7 @@ namespace TweetAppApi
             }
             catch (Exception)
             {
-                throw;
+               
             }
             return allUsers;
         }
@@ -58,7 +58,7 @@ namespace TweetAppApi
             catch (Exception)
             {
 
-                throw;
+                
             }
             
             return userModels;
@@ -78,7 +78,7 @@ namespace TweetAppApi
             }
             catch (Exception)
             {
-                throw;
+                
             }
            
             return BadRequest("Unable to Register User");
@@ -99,7 +99,7 @@ namespace TweetAppApi
             catch (Exception)
             {
 
-                throw;
+                
             }
             return BadRequest();
         }
@@ -118,7 +118,7 @@ namespace TweetAppApi
             }
             catch (Exception)
             {
-                throw;
+                
             }
             return BadRequest();
         }
@@ -139,7 +139,7 @@ namespace TweetAppApi
             catch (Exception)
             {
 
-                throw;
+               
             }
 
             return BadRequest();
@@ -161,7 +161,6 @@ namespace TweetAppApi
             catch (Exception)
             {
 
-                throw;
             }
             return BadRequest();
         }
@@ -185,7 +184,7 @@ namespace TweetAppApi
             catch (Exception)
             {
 
-                throw;
+                
             }
             return BadRequest();
         }
@@ -205,7 +204,7 @@ namespace TweetAppApi
             catch (Exception)
             {
 
-                throw;
+                
             }
             return BadRequest();
         }
@@ -225,7 +224,7 @@ namespace TweetAppApi
             catch (Exception)
             {
 
-                throw;
+                
             }
             return BadRequest();
         }
@@ -248,7 +247,7 @@ namespace TweetAppApi
             }
             catch (Exception)
             {
-                throw;
+                
             }
             return BadRequest();
         }

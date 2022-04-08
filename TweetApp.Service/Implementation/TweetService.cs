@@ -28,14 +28,16 @@ namespace TweetApp.Service.Implementation
 
         public List<TweetModel> getAllTweetsOfUser(string username)
         {
+            var tweeters=new List<TweetModel>();
             List<TweetModel> tweetModels = new List<TweetModel>();
             UserModel user = new UserModel();
             user=_userRepository.FindByCondtion(x => x.username.Equals(username));
             if(user!=null)
             {
                 tweetModels = _tweetRepository.FindAllByCondtion(x => x.userId.Equals(user.Id));
+                tweeters = tweetModels.FindAll(x => x.userId.Equals(user.Id));
             }
-            return tweetModels;
+            return tweeters;
         }
 
         public bool LikeTweet(string id)

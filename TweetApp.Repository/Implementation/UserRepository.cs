@@ -30,8 +30,6 @@ namespace TweetApp.Repository.Implementation
             }
             catch (Exception)
             {
-
-                throw;
             }
             return status;
         }
@@ -47,13 +45,15 @@ namespace TweetApp.Repository.Implementation
         }
         public List<UserModel> FindAllByCondtion(Expression<Func<UserModel, bool>> expression)
         {
-            return _userData.Find(expression => true).ToList();
+            //   return _userData.Find(expression => true).ToList();
+            return _userData.Find(expression).ToList();
+
         }
 
         public UserModel FindByCondtion(Expression<Func<UserModel, bool>> expression)
         {
             return _userData.Find(expression).FirstOrDefault();
-        }
+            }
 
         public bool Update(UserModel data)
         {
@@ -64,8 +64,6 @@ namespace TweetApp.Repository.Implementation
             }
             catch (Exception)
             {
-
-                throw;
             }
             return false;
         }
