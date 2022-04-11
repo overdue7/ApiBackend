@@ -54,12 +54,18 @@ namespace TweetApp.Repository.Implementation
 
         public List<TweetModel> FindAll()
         {
-           return _tweetData.Find(TweetModel => true).ToList(); ;
+             List<TweetModel> twe= new List<TweetModel>();
+            twe = _tweetData.Find(TweetModel => true).ToList();
+            twe.Reverse();
+            return twe;
         }
 
         public List<TweetModel> FindAllByCondtion(Expression<Func<TweetModel, bool>> expression)
         {
-            return _tweetData.Find(expression => true).ToList();
+            List<TweetModel> twe = new List<TweetModel>();
+            twe = _tweetData.Find(expression => true).ToList();
+            twe.Reverse();
+            return twe;
         }
 
         public TweetModel FindByCondtion(Expression<Func<TweetModel, bool>> expression)
