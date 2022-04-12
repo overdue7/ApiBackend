@@ -7,7 +7,7 @@ namespace TweetApp.Service.Interface
 {
    public interface ITweetService
     {
-        List<TweetModel> getAllTweets();
+        List<TweetAndUser> getAllTweets();
         List<TweetModel> getAllTweetsOfUser(string username);
         bool postTweet(TweetModel tweetModel);
         bool UpdateTweet(TweetModel tweetModel);

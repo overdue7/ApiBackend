@@ -21,9 +21,27 @@ namespace TweetApp.Service.Implementation
             throw new NotImplementedException();
         }
 
-        public List<TweetModel> getAllTweets()
+        public List<TweetAndUser> getAllTweets()
         {
-            return _tweetRepository.FindAll();
+            List<TweetModel> twe = new List<TweetModel>();
+            List<TweetAndUser> userAndTweet = new List<TweetAndUser>();
+            UserModel user;
+            twe= _tweetRepository.FindAll();
+            foreach(var item in twe)
+            {
+               user= _userRepository.FindByCondtion(x => x.Id.Equals(item.userId));
+                userAndTweet.Add(new TweetAndUser
+                {
+                    Id=item.Id,
+                    userId=item.userId,
+                    tweetDescription=item.tweetDescription,
+                    createdAt=item.createdAt,
+                    updatedAt=item.updatedAt,
+                    first_name=user.first_name,
+                    last_name=user.last_name
+                });
+            }
+            return userAndTweet;
         }
 
         public List<TweetModel> getAllTweetsOfUser(string username)

@@ -190,7 +190,7 @@ namespace TweetAppApi
         }
 
         [HttpGet("all")]
-        public ActionResult<List<TweetModel>> getTweet()
+        public ActionResult<List<TweetAndUser>> getTweet()
         {
             try
             {
