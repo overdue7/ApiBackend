@@ -53,7 +53,7 @@ namespace TweetApp.Repository.Implementation
         public UserModel FindByCondtion(Expression<Func<UserModel, bool>> expression)
         {
             return _userData.Find(expression).FirstOrDefault();
-            }
+                }
 
         public bool Update(UserModel data)
         {

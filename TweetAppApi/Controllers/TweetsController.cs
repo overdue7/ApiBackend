@@ -210,7 +210,7 @@ namespace TweetAppApi
         }
 
         [HttpGet("{username}")]
-        public ActionResult<List<TweetModel>> getUserTweets(string username)
+        public ActionResult<List<TweetAndUser>> getUserTweets(string username)
         {
             try
             {
@@ -248,6 +248,25 @@ namespace TweetAppApi
             catch (Exception)
             {
                 
+            }
+            return BadRequest();
+        }
+        [HttpPost("tweet/like")]
+        public ActionResult<TweetModel> LikeTweet([FromBody] LikeModel likeModel)
+        {
+            try
+            {
+                var status = _tweetService.LikeTweet(likeModel);
+                if (status)
+                {
+                    return Ok("Tweet liked");
+                }
+                return Conflict("Unable to like tweet");
+            }
+            catch (Exception)
+            {
+
+
             }
             return BadRequest();
         }

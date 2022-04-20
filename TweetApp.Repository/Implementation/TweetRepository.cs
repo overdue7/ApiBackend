@@ -11,12 +11,14 @@ namespace TweetApp.Repository.Implementation
     public class TweetRepository : ITweetRepository
     {
         private readonly IMongoCollection<TweetModel> _tweetData;
+        private readonly IMongoCollection<LikeModel> _likeData;
 
         public TweetRepository(IDatabaseSettings databaseSettings)
         {
             var client = new MongoClient(databaseSettings.ConnectionString);
             var database = client.GetDatabase(databaseSettings.DatabaseName);
             _tweetData = database.GetCollection<TweetModel>("TweetData");
+            _likeData = database.GetCollection<LikeModel>("LikeData");
         }
         public bool Create(TweetModel data)
         {
@@ -73,6 +75,28 @@ namespace TweetApp.Repository.Implementation
             return _tweetData.Find(expression => true).FirstOrDefault();
         }
 
+        public List<LikeModel> GetAllLikes(Expression<Func<LikeModel, bool>> expression)
+        {
+            return _likeData.Find(expression).ToList();
+        }
+
+        public bool LikeTweet(LikeModel likeModel)
+        {
+            bool status = false;
+            try
+            {
+              
+                _likeData.InsertOne(likeModel);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return status;
+        }
+
         public bool Update(TweetModel data)
         {
             try
@@ -86,5 +110,6 @@ namespace TweetApp.Repository.Implementation
             }
             return false;
         }
+        
     }
 }

@@ -14,5 +14,9 @@ namespace TweetApp.Repository.Interface
         bool Create(TweetModel data);
         bool Update(TweetModel data);
         bool Delete(string id);
+
+        bool LikeTweet(LikeModel likeModel);
+
+        List<LikeModel> GetAllLikes(Expression<Func<LikeModel, bool>> expression);
     }
 }
